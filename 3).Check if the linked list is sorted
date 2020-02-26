@@ -1,0 +1,84 @@
+#include <iostream>
+
+using namespace std;
+struct Node
+{
+    int data;
+    Node* next;
+    
+};
+Node *head;
+
+void insert_at_end(int number)
+{
+    Node *p;
+   static Node *last; 
+    if(head==NULL)
+    {
+        p=new Node;
+        p->data=number;
+        p->next=head;
+        head=p;
+        last=p;
+        cout<<last->next;
+
+    }
+    else
+    {
+        p=new Node;
+        p->data=number;
+        p->next=last->next;
+        last->next=p;
+        last=p;
+    }
+    
+}
+int check_sort()
+{
+    Node *q=NULL;
+    Node *temp=head;
+    while(temp!=NULL)
+    {
+        q=temp;
+        temp=temp->next;
+        if(temp){
+        if(!(temp->data>=q->data))
+        return 0;
+        }
+    }
+    return 1;
+}
+
+
+int main()
+{
+    head=NULL;
+    int n,number;
+    cout<<"enter the number of times u want to enter";
+    cin>>n;
+    for(int i=0;i<n;++i)
+    {
+        cout<<"enter the number"<<endl;
+        cin>>number;
+        insert_at_end(number);
+        
+    }
+    int result=check_sort();
+    if(result==1)
+    {
+        cout<<"list is sorted"<<endl;
+    }
+    else
+    {
+        cout<<"list is not sorted"<<endl;
+    }
+    Node *temp;
+    temp=head;
+    
+   while(temp!=NULL)
+    {
+        cout<<temp->data;
+        temp=temp->next;
+    }
+    
+}
