@@ -1,0 +1,79 @@
+#include <iostream>
+
+using namespace std;
+struct Node
+{
+    int data;
+    Node* next;
+    
+};
+Node *head;
+
+void insert_at_end(int number)
+{
+    Node *p;
+   static Node *last; 
+    if(head==NULL)
+    {
+        p=new Node;
+        p->data=number;
+        p->next=head;
+        head=p;
+        last=p;
+        cout<<last->next;
+
+    }
+    else
+    {
+        p=new Node;
+        p->data=number;
+        p->next=last->next;
+        last->next=p;
+        last=p;
+    }
+    
+}
+void reverse()
+{
+    Node *p=head;
+    Node *temp;
+    Node *q;
+    while(p!=NULL)
+    {
+        if(p){
+        temp=p->next;
+        p->next=q;;
+        q=p;
+        p=temp;
+        }
+    }
+    head=q;
+    
+    
+    
+}
+
+
+int main()
+{
+    head=NULL;
+    int n,number;
+    cout<<"enter the number of times u want to enter";
+    cin>>n;
+    for(int i=0;i<n;++i)
+    {
+        cout<<"enter the number"<<endl;
+        cin>>number;
+        insert_at_end(number);
+        
+    }
+    reverse();
+    Node *temp;
+    temp=head;
+   while(temp!=NULL)
+    {
+        cout<<temp->data;
+        temp=temp->next;
+    }
+    
+}
