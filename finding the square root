@@ -1,0 +1,26 @@
+#include <bits/stdc++.h>
+
+using namespace std;
+
+int main()
+{
+    int maxi;
+    int n;
+    cout<<"enter the number u want to fing the square root";
+    cin>>n;
+    maxi=1;
+    for(int i=1;i<=n;++i)
+    {
+        if(i*i>n)
+        {
+            cout<<maxi;
+            break;
+        }
+        else
+        {
+            maxi=max(i,1);
+        }
+            
+        
+    }
+}
