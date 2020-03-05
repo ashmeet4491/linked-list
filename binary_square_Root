@@ -1,0 +1,33 @@
+#include <iostream>
+
+using namespace std;
+void binary_find_square_root(int number,int low,int high)
+{
+    int mid;
+    int maxi=0;
+    while(low<=high)
+    {
+        mid=(low+high)/2;
+        if(mid*mid>number)
+        {
+            high=mid-1;
+        }
+        else if(mid*mid<=number)
+        {
+        maxi=max(mid,0);
+        low=high+1;
+        }
+        
+    }
+    cout<<maxi;
+}
+int main()
+{
+    int number;
+    cin>>number;
+    int low;
+    int high;
+    low=0;
+    high=number/2;
+    binary_find_square_root(number,low,high);
+}
